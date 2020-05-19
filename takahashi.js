@@ -30,6 +30,17 @@ window.onload = async () => {
     document.title = slides[currentSlideIndex];
     document.body.innerHTML = slides[currentSlideIndex];
 
+    // These thresholds are arbitrary
+    if (document.body.innerHTML.length > 40) {
+      document.body.style.fontSize = '5vmax';
+    } else if (document.body.innerHTML.length > 20) {
+      document.body.style.fontSize = '7.5vmax';
+    } else if (document.body.innerHTML.length > 10) {
+      document.body.style.fontSize = '10vmax';
+    } else {
+      document.body.style.fontSize = '12.5vmax';
+    }
+
     searchParams.set('slide', currentSlideIndex);
     history.replaceState(null, '', `${window.location.pathname}?${searchParams.toString()}`);
   };
