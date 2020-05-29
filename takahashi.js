@@ -51,6 +51,12 @@ window.onload = async () => {
   const rightKeys = new Set(['d', 'D', 's', 'S', 'l', 'L', 'j', 'J', 'ArrowRight', ' ']);
   const resetKeys = new Set(['0']);
   window.addEventListener('keydown', (event) => {
+    if (event.ctrlKey) {
+      // We don't want to react to the user pressing Ctrl+C for example
+      // because that's counterintuitive
+      return;
+    }
+
     if (leftKeys.has(event.key)) {
       currentSlideIndex = clampIndex(currentSlideIndex - 1);
       updateUI();
