@@ -1,7 +1,7 @@
 window.onload = async () => {
   const searchParams = new URL(window.location).searchParams;
+
   const sourceUrl = searchParams.get('sourceUrl');
-  let currentSlideIndex = parseInt(searchParams.get('slide'));
 
   if (!sourceUrl) {
     document.body.innerHTML = 'To present something, add "?sourceUrl=[URL to plaintext]" to the URL of this page.';
@@ -24,7 +24,7 @@ window.onload = async () => {
 
   const clampIndex = (n) => Math.min(slides.length - 1, Math.max(0, n));
 
-  currentSlideIndex = isNaN(currentSlideIndex) ? 0 : clampIndex(currentSlideIndex);
+  let currentSlideIndex = clampIndex(parseInt(searchParams.get('slide')) || 0);
 
   const updateUI = () => {
     document.title = slides[currentSlideIndex];
