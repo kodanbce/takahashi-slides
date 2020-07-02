@@ -76,4 +76,11 @@ window.onload = async () => {
       updateUI();
     }
   });
+
+  window.addEventListener('touchstart', (event) => {
+    if (event.touches.length >= 2) {
+      currentSlideIndex = clampIndex(currentSlideIndex - 1);
+      updateUI();
+    }
+  });
 };

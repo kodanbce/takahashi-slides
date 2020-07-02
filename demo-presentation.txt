@@ -1,11 +1,13 @@
-Push right
+Push right or tap
 to change slides
 S/D/J/L work too
 So does spacebar
 or left click
+or tap
 To go back
 push left/W/A/H/K
-Zero resets to the beginning
+or tap with two fingers
+Push zero to reset
 Presentation source is in the URL
 Takahashi method = concise slides
 No images
