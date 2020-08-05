@@ -13,6 +13,11 @@ How to Use in a Hurry
 
 Save your plaintext presentation in the root of this repo as `presentation.txt`. Whip up a web server with `python3 -m http.server` while in the root. Navigate [here](http://localhost:8000?sourceUrl=http://localhost:8000/presentation.txt) and you should see your presentation.
 
+How to Use without a CLI
+---
+
+Write your presentation using an online notepad. One option is https://edit.sunfox.org/insert-presentation-title-here that lets you read the plaintext version of the document by appending `.txt` to the URL. Then, you can turn it into a Takahashi presentation with https://kodanbce.github.io/takahashi/ and a CORS proxy. So, https://kodanbce.github.io/takahashi/index.html?sourceUrl=https://cors-anywhere.herokuapp.com/https://edit.sunfox.org/insert-presentation-title-here.txt.
+
 Demo
 ---
 
