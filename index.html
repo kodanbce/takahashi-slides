@@ -32,10 +32,10 @@ body {
 window.onload = async () => {
   const searchParams = new URL(window.location).searchParams;
 
-  const sourceUrl = searchParams.get('sourceUrl');
+  const sourceUrl = searchParams.get('url');
 
   if (!sourceUrl) {
-    document.body.innerHTML = 'To present something, add "?sourceUrl=[URL to plaintext]" to the URL of this page.';
+    document.body.innerHTML = 'To present something, add "?url=[URL to plaintext]" to the URL of this page.';
     return;
   }
 
