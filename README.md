@@ -6,7 +6,7 @@ A page that fetches a text file from a user-provided URL and presents it as a [T
 How to Use
 ---
 
-Just drop `index.html`, `takahashi.css` and `takahashi.js` to your server or host them in AWS S3 or serve them manually with `python3 -m http.server`. The source URL for the text is provided as a query parameter like `?sourceUrl=[URL to plaintext]`.
+Just drop `index.html` to your server or host it in AWS S3 or serve it manually with `python3 -m http.server`. The source URL for the text is provided as a query parameter like `?sourceUrl=[URL to plaintext]`.
 
 How to Use in a Hurry
 ---
