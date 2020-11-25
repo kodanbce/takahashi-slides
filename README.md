@@ -1,7 +1,7 @@
 Takahashi Slideshow Viewer
 ===
 
-A page that fetches a text file from a user-provided URL and presents it as a [Takahashi method slideshow](https://en.wikipedia.org/wiki/Takahashi_method). See the [demo](https://kodanbce.github.io/takahashi/index.html?url=https://kodanbce.github.io/takahashi/demo-presentation.txt) to see it in action.
+A page that fetches a text file from a user-provided URL and presents it as a [Takahashi method slideshow](https://en.wikipedia.org/wiki/Takahashi_method). See the [demo](https://kodanbce.github.io/takahashi/?url=https://kodanbce.github.io/takahashi/demo-presentation.txt) to see it in action.
 
 How to Use
 ---
@@ -16,12 +16,12 @@ Save your plaintext presentation in the root of this repo as `presentation.txt`.
 How to Use without a CLI
 ---
 
-Write your presentation using an online notepad. One option is https://edit.sunfox.org/insert-presentation-title-here that lets you read the plaintext version of the document by appending `.txt` to the URL. Then, you can turn it into a Takahashi presentation with https://kodanbce.github.io/takahashi/ and a CORS proxy. So, https://kodanbce.github.io/takahashi/index.html?url=https://cors-anywhere.herokuapp.com/https://edit.sunfox.org/insert-presentation-title-here.txt.
+Write your presentation using an online notepad. One option is https://edit.sunfox.org/insert-presentation-title-here that lets you read the plaintext version of the document by appending `.txt` to the URL. Then, you can turn it into a Takahashi presentation with https://kodanbce.github.io/takahashi/ and a CORS proxy. So, https://kodanbce.github.io/takahashi/?url=https://cors-anywhere.herokuapp.com/https://edit.sunfox.org/insert-presentation-title-here.txt.
 
 Demo
 ---
 
-[See here](https://kodanbce.github.io/takahashi/index.html?url=https://kodanbce.github.io/takahashi/demo-presentation.txt). The source for the demo is in this repo in the file `demo-presentation.txt`.
+[See here](https://kodanbce.github.io/takahashi/?url=https://kodanbce.github.io/takahashi/demo-presentation.txt). The source for the demo is in this repo in the file `demo-presentation.txt`.
 
 License
 ---
