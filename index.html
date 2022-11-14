@@ -33,17 +33,20 @@ window.onload = async () => {
   const searchParams = new URL(window.location).searchParams;
 
   const sourceUrl = searchParams.get('url');
+  const embeddedData = document.getElementById('presentation')?.innerHTML?.trim();
 
-  if (!sourceUrl) {
-    document.body.innerHTML = 'To present something, add "?url=[URL to plaintext]" to the URL of this page.';
+  if (!sourceUrl && !embeddedData) {
+    document.body.innerHTML = 'To present something, create a "<script id="presentation">" element or use "?url=[URL to plaintext]" ';
     return;
   }
 
-  const sourceResponse = await fetch(sourceUrl);
-  const source = await sourceResponse.text();
+  const rawSlides =
+    sourceUrl
+      ? await (await fetch(sourceUrl)).text()
+      : embeddedData;
 
   const slides =
-    source
+    rawSlides
       .split('\n')
       .map(row => row.trim())
       .filter(row => row.length >= 1);
@@ -121,4 +124,28 @@ window.onload = async () => {
   <body>
     ...
   </body>
+
+  <script type="text/plain" id="presentation">
+Push right or tap
+to change slides
+S/D/J/L work too
+So does spacebar
+or left click
+or tap
+To go back
+push left/W/A/H/K
+or tap with two fingers
+Push zero to reset
+Presentation source is in the URL
+Takahashi method = concise slides
+No images
+No graphs
+No videos
+Takahashi lets the presenter speak
+The slideshow is just an aid
+Not a means in itself
+This is actually a terrible example of the method because it grabs the readers attention 100%
+But I hope it lets you understand the point of this tool
+Thanks!
+  </script>
 </html>
