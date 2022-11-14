@@ -1,27 +1,21 @@
-Takahashi Slideshow Viewer
+takahashi-slides
 ===
 
-A page that fetches a text file from a user-provided URL and presents it as a [Takahashi method slideshow](https://en.wikipedia.org/wiki/Takahashi_method). See the [demo](https://kodanbce.github.io/takahashi/?url=https://kodanbce.github.io/takahashi/demo-presentation.txt) to see it in action.
+Minimal [Takahashi method slideshow](https://en.wikipedia.org/wiki/Takahashi_method) viewer
 
-How to Use
+Usage
 ---
 
-Just drop `index.html` to your server or host it in AWS S3 or serve it manually with `python3 -m http.server`. The source URL for the text is provided as a query parameter like `?url=[URL to plaintext]`.
+You can provide the slides either as an embedded plaintext file or by referring to a remote file by its URL.
 
-How to Use in a Hurry
----
+To use the embedded file, open `index.html` in an editor and find the `#presentation` element. Then open `index.html` in a browser.
 
-Save your plaintext presentation in the root of this repo as `presentation.txt`. Whip up a web server with `python3 -m http.server` while in the root. Navigate [here](http://localhost:8000?url=http://localhost:8000/presentation.txt) and you should see your presentation.
-
-How to Use without a CLI
----
-
-Write your presentation using an online notepad. One option is https://edit.sunfox.org/insert-presentation-title-here that lets you read the plaintext version of the document by appending `.txt` to the URL. Then, you can turn it into a Takahashi presentation with https://kodanbce.github.io/takahashi/ and a CORS proxy. So, https://kodanbce.github.io/takahashi/?url=https://cors-anywhere.herokuapp.com/https://edit.sunfox.org/insert-presentation-title-here.txt.
+To refer to a remote file, open `index.html` in a browser and add `?url=[remote_file]` to the URL.
 
 Demo
 ---
 
-[See here](https://kodanbce.github.io/takahashi/?url=https://kodanbce.github.io/takahashi/demo-presentation.txt). The source for the demo is in this repo in the file `demo-presentation.txt`.
+[See here](https://kodanbce.github.io/takahashi-slides/)
 
 License
 ---
