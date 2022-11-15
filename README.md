@@ -8,9 +8,11 @@ Usage
 
 You can provide the slides either as an embedded plaintext file or by referring to a remote file by its URL.
 
-To use the embedded file, open `index.html` in an editor and find the `#presentation` element. Then open `index.html` in a browser.
+The plaintext slides file should contain one slide per line.
 
-To refer to a remote file, open `index.html` in a browser and add `?url=[remote_file]` to the URL.
+To use the embedded file, open `index.html` in an editor and edit the `#presentation` element. Then open `index.html` in a browser to see the presentation.
+
+To use to a remote file, open `index.html` in a browser and add `?url=[remote_file]` to the URL.
 
 Demo
 ---
