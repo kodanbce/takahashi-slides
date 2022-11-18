@@ -7,24 +7,35 @@
 
     <title>Takahashi Slides</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap" rel="stylesheet">
-
     <style>
+@font-face {
+  font-family: 'Gothic A1';
+  src: url('font.ttf'); /* If it's not available, it's ignored */
+}
+
 body {
-  height: 100vh;
-  margin: 0;
-  padding: 5vmin;
-  box-sizing: border-box;
+  height: 40vh;
+  margin: 30vh;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   font-size: 10vmin;
-  font-family: 'Arimo', Arial, sans-serif;
+  font-family: 'Gothic A1', sans-serif;
+  font-weight: 700;
   line-height: 1.2em;
-  text-align: center;
   text-rendering: optimizeLegibility;
+
+  user-select: none;
+
+  color: black;
+  background-color: white;
+}
+
+body.dark {
+  color: white;
+  background-color: black;
 }
     </style>
 
@@ -38,7 +49,7 @@ async function readSlides() {
     try {
       rawSlides = await (await fetch(sourceUrl)).text();
     } catch (e) {
-      document.body.innerHTML = 'network error';
+      document.body.textContent = 'network error';
       throw e;
     }
   } else {
@@ -46,14 +57,14 @@ async function readSlides() {
   }
 
   if (!rawSlides) {
-    document.body.innerHTML = 'To present something, create a "<script id="presentation">" element or use "?url=[URL to plaintext]"';
-    return;
+    rawSlides = 'To present something, create a "<script id="presentation">" element or use "?url=[URL to plaintext]"';
   }
 
   const slides =
     rawSlides
       .split('\n')
       .map(row => row.trim())
+      .map(row => row.replaceAll('\\n', '\n'))
       .filter(row => row.length >= 1);
 
   return slides;
@@ -64,18 +75,20 @@ function showSlide(slides, index) {
   history.replaceState(null, '', `${window.location.pathname}?${searchParams.toString()}`);
 
   document.title = slides[index];
-  document.body.innerHTML = slides[index];
+  document.body.textContent = slides[index];
 
-  // These thresholds are arbitrary
-  if (document.body.innerHTML.length > 40) {
-    document.body.style.fontSize = '5vmax';
-  } else if (document.body.innerHTML.length > 20) {
-    document.body.style.fontSize = '7.5vmax';
-  } else if (document.body.innerHTML.length > 10) {
-    document.body.style.fontSize = '10vmax';
-  } else {
-    document.body.style.fontSize = '12.5vmax';
+  function resizeToFit(fontSize) {
+    document.body.style.fontSize = `${fontSize}vmin`;
+
+    const textIsTooBig =
+      document.body.clientWidth < document.body.scrollWidth
+      || document.body.clientHeight < document.body.scrollHeight;
+    if (textIsTooBig) {
+      resizeToFit(fontSize * 0.9);
+    }
   }
+
+  resizeToFit(50);
 };
 
 function listenToUserInput(callback) {
@@ -114,6 +127,10 @@ function listenToUserInput(callback) {
 }
 
 window.onload = async function main() {
+  if (searchParams.get('dark')) {
+    document.body.classList.add('dark');
+  }
+
   const slides = await readSlides();
 
   let currentSlideIndex = Number(searchParams.get('slide'));
